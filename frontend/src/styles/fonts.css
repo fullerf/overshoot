@@ -1,0 +1,46 @@
+/*
+ * PP Neue Montreal — Primary UI font (Pangram Pangram)
+ * Gestura Text — Display headings (Sociotype)
+ * PP Neue Montreal Mono — Tables, overlines (system fallback for now)
+ *
+ * License: Free to Try (personal use / pitches / demos)
+ */
+
+/* ── PP Neue Montreal ─────────────────────────────────────────────────── */
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('/fonts/PPNeueMontreal-Book.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('/fonts/PPNeueMontreal-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('/fonts/PPNeueMontreal-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Gestura Text ─────────────────────────────────────────────────────── */
+@font-face {
+  font-family: 'Gestura Text';
+  src: url('/fonts/GesturaText-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Font stacks (used in theme.css) ──────────────────────────────────── */
+:root {
+  --font-sans: 'PP Neue Montreal', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', ui-monospace, monospace;
+  --font-display: 'Gestura Text', Georgia, 'Times New Roman', serif;
+}

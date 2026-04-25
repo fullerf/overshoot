@@ -1,0 +1,91 @@
+[project]
+name = "overshoot"
+version = "0"
+description = "Overshoot"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "fastapi>=0.115.0",
+  "uvicorn[standard]>=0.30.0",
+]
+
+readme = "README.md"
+license = {file = "LICENSE"}
+
+[project.optional-dependencies]
+dev = [
+  "ruff>=0.6.4",
+  "pytest>=7.0.0",
+  "jupyter",
+  "ipykernel",
+]
+
+[project.scripts]
+overshoot = "overshoot.cli:main"
+
+[tool.hatch.metadata]
+    allow-direct-references = true
+
+[build-system]
+    build-backend = "hatchling.build"
+    requires      = ["hatchling"]
+
+[tool.hatch.build.targets.wheel]
+    packages = [
+        "src/overshoot",
+    ]
+
+[tool.ruff]
+    exclude = [
+        "*.ipynb",
+        ".git",
+        ".pytest_cache",
+        ".ruff_cache",
+        ".venv",
+        ".vscode",
+        "build",
+        "dist",
+        "node_modules",
+        "venv",
+    ]
+    indent-width = 4
+    line-length  = 88
+    target-version = "py312"
+
+    [tool.ruff.lint]
+        select = [
+            "F821", # undefined-name
+            "F841", # unused-variable
+            "F501", # percent-format-invalid-format
+            "F632", # is-literal
+            "F701", # break-outside-loop
+            "S502", # ssl-insecure-version
+            "S506", # unsafe-yaml-load
+            "B006", # mutable-argument-default
+            "B008", # function-call-in-default-argument
+            "B018", # useless-expression
+            "SIM101", # duplicate-isinstance-call
+            "SIM115", # open-file-with-context-handler
+            "E501", # line-too-long
+            "E711", # none-comparison
+            "I001", # unsorted-imports
+            "PT010", # pytest-raises-without-exception
+        ]
+        ignore = ["E501"]
+        unfixable = ["B"]
+        fixable = ["ALL"]
+        dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+        [tool.ruff.lint.per-file-ignores]
+            "**/{tests,docs,tools}/*"       = ["E402"]
+            "__init__.py"                   = ["E402"]
+
+[tool.ruff.format]
+    quote-style = "single"
+    indent-style = "space"
+    skip-magic-trailing-comma = false
+    line-ending = "auto"
+    docstring-code-format = false
+    docstring-code-line-length = "dynamic"
+
+[tool.ruff.lint.isort]
+    known-first-party = ["src/*"]
